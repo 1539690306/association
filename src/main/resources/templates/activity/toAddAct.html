@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+
+</head>
+<body>
+	<fieldset>
+		<legend>发布活动页面</legend>
+		<form action="addAct" method="post">
+		活动主题：<input id="actname" type="text" name="actname" size="20" />
+
+		截止时间：<input type="datetime-local" name=endtime ><br /> <br />
+		活动内容：
+					<textarea  name="content"
+						style="border: 0; border-radius: 5px; background-color: rgba(241, 241, 241, .98); width: 355px; height: 100px; padding: 10px; resize: none;"
+						placeholder="请输入"></textarea>
+		<br /> <br />		
+		<input
+				type="submit" value="提交" />
+				<h3 th:text="${msg}" style="color: red"></h3><br/>
+		</form>
+	</fieldset>
+</body>
+</html>

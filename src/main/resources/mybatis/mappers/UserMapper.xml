@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 该文件存放CRUD的sql语句 -->
+<mapper namespace="com.ls.mapper.UserMapper">
+
+	<select id="findAll" resultType="User">
+		select * from t_user
+	</select>
+
+	<select id="findByUsername" parameterType="string"
+		resultType="user">
+		SELECT *
+		FROM
+		t_user where name = #{value}
+	</select>
+	
+	<select id="searchByUsername" parameterType="string"
+		resultType="user">
+		SELECT *
+		FROM
+		t_user where name like "%"#{value}"%"
+	</select>
+	<select id="findUserById" parameterType="int" 
+	resultType="User">
+		select * from t_user where id=#{id}
+	</select>
+	
+	<delete id="deleteUserById" parameterType="int">
+		delete from t_user where id=#{id}
+	</delete>
+	<update id="updateUser" parameterType="User">
+		update t_user set
+		name=#{name},sex=#{sex},dept=#{dept},roles=#{roles},perms=#{perms},major=#{major},phone=#{phone},email=#{email} where
+		id=#{id}
+	</update>
+
+	<insert id="addUser" parameterType="User">
+		insert into
+		t_user(name,password,roles,perms,sex,dept,phone,email,major)values(#{name},123456,#{roles},#{perms},#{sex},#{dept},#{phone},#{email},#{major})
+	</insert>
+	
+	<update id="updateUserPwd" parameterType="User">
+		update t_user set
+		password=#{password} where
+		id=#{id}
+	</update>
+	
+	<update id="resetUserPwd" parameterType="User">
+		update t_user set
+		password=123456 where
+		id=#{id}
+	</update>
+	
+	<update id="updateUserPerms" parameterType="User">
+		update t_user set
+		perms=#{perms} where
+		id=#{id}
+	</update>
+	
+	<select id="countDeptUser" parameterType="string"
+		resultType="int">
+		SELECT count(*) num
+		FROM
+		t_user where dept =#{value}
+	</select>
+	
+	<select id="findUserByDept" parameterType="string"
+		resultType="User">
+		SELECT *
+		FROM
+		t_user where dept =#{value}
+	</select>
+	
+	<insert id="regist" parameterType="User">
+		insert into
+		t_user(name,password,roles,perms,sex,dept,phone,email,major)values(#{name},#{password},"普通用户",#{perms},#{sex},#{dept},#{phone},#{email},#{major})
+	</insert>
+	
+	<select id="countWomanUser" parameterType="string" 
+	resultType="int">
+		select count(*) countwoman from t_user where sex="女"
+	</select>
+	
+	<select id="countManUser" parameterType="string" 
+	resultType="int">
+		select count(*) countman from t_user where sex="男"
+	</select>
+	
+	<select id="countUser" parameterType="string" 
+	resultType="int">
+		select count(*) countuser from t_user 
+	</select>
+	
+</mapper>

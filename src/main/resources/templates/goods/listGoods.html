@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    
+    <link rel="stylesheet" href="../css/pintuer.css">
+<link rel="stylesheet" href="../css/admin.css">
+<script src="../js/jquery-1.4.3.js"></script>
+</head>
+<body>
+<form action="findGoodsByName" id="findGoodsByName" method="post">
+        <div class="padding border-bottom">
+            <ul class="search" style="padding-left: 10px;">
+            <li >
+                    <a shiro:hasRole="管理员,超级管理员" class="button border-main icon-plus-square-o" th:href="@{/toAddGoods}">添加物品</a>
+                </li>
+                <li>
+                <input id="name" type="text" name="name" class="input" placeholder="请输入..."
+                        style="width: 250px;line-height: 17px;display: inline-block" />
+                   
+                    <a href="javascript:void(0)" onclick="changeSearch()" class="button border-main icon-search">搜索</a>
+                </li>
+            </ul>
+        </div>
+    </form>
+<table class="table table-hover text-center">
+		<tr>
+			<td>ID</td>
+			<td>名称</td>
+			<td>价格</td>
+			<td>图片</td>
+			<td>描述</td>
+			<td>状态</td>
+			<td colspan="2" shiro:hasAnyRoles="管理员">操作</td>
+		</tr>
+		<tr th:each="goods:${goodss}">
+			<td th:text="${goods.id}"></td>
+			<td th:text="${goods.name}"></td>
+			<td ><label th:text="${goods.price}"></label><label>元</label></td>
+			<td ><img th:src="${goods.url}" alt="" style="width: 200px;height: 200px;"></td>
+			<td th:text="${goods.ms}"></td>
+			<td th:text="${goods.state}"></td>
+			
+			
+			
+			<td ><a shiro:hasAnyRoles="管理员,超级管理员" class="button border-red"
+				th:href="@{modifyGoods(id=${goods.id})}"><span class="icon-edit">修改</span></a>
+			<a shiro:hasAnyRoles="管理员,超级管理员" class="button border-main"
+				th:href="@{deleteGoods(id=${goods.id})}"><span
+				onclick="javascript:return del();"	class="icon-trash-o">删除</span></a></td>
+		</tr>
+	</table>
+<script>
+function del() {
+	var msg = "确认删除吗？";
+	if (confirm(msg)==true){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+function changeSearch(){
+    $("#findGoodsByName").submit();
+}
+</script>
+
+</body>
+</html>

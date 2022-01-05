@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ls.mapper.ActMapper">
+	
+	<select id="findAllAct" 
+		resultType="Act">
+		SELECT *
+		FROM
+		t_act order by createtime desc
+	</select>
+	
+	<select id="findActById" 
+		resultType="Act">
+		SELECT *
+		FROM
+		t_act where id = #{value}
+	</select>
+	
+	<select id="findActByTitle"  parameterType="string"
+		resultType="Act">
+		SELECT *
+		FROM
+		t_act where actname like "%"#{value}"%"
+	</select>
+	
+	<select id="findUserByActbmjl"  parameterType="int"
+		resultType="Actbmjl">
+		SELECT *
+		FROM
+		t_actbmjl where actid =#{value}
+	</select>
+	
+	<insert id="addAct" parameterType="Act">
+		insert into
+		t_act(creater,actname,content,createtime,deadline,countuser)values(#{creater},#{actname},#{content},#{createtime},#{deadline},#{countuser})
+	</insert>
+	
+	<insert id="addActbmjl" parameterType="Act">
+		insert into
+		t_actbmjl(actId,username,sex,phone)values(#{actId},#{username},#{sex},#{phone})
+	</insert>
+	
+	<delete id="deleteActById" parameterType="int">
+	  delete from t_act where id=#{id}
+	</delete>
+	
+	<delete id="deleteActBmjlById" parameterType="int">
+	  delete from t_actbmjl where id=#{id}
+	</delete>
+	
+	<select id="countActuser" 
+		resultType="int">
+		select count(*) from t_actbmjl where actId = #{id}
+	</select>
+	
+</mapper>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>社团公告</title>
+<script type="text/javascript" src="@{js/jquery-1.4.3.js}"></script>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/notice.css">
+<link rel="stylesheet" href="../css/pintuer.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="./css/index.css">
+<script src="../js/jquery-1.4.3.js"></script>
+</head>
+<body>
+<form action="searchNotice" id="listform" method="post">
+        <div class="padding border-bottom">
+            <ul class="search" style="padding-left: 10px;">
+          
+                <li>
+                <input id="article" type="text" name="article" class="input" placeholder="请输入..."
+                        style="width: 250px;line-height: 17px;display: inline-block" />
+                   
+                    <a href="javascript:void(0)" onclick="changeSearch()" class="button border-main icon-search">搜索</a>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-12">
+	<table class="table text-center table-hover">
+		
+		<tr th:each="notice:${notices}">
+
+			<td ><br/>
+			
+			<textarea  name="article" th:text="${notice.article}"
+							readonly="readonly"
+							style="border: 0; border-radius: 5px; background-color: rgba(241, 241, 241, .98); width: 1000px; height: 200px; padding: 10px; resize: none;"></textarea>
+
+						<br/><br/>
+			<span class="p2" th:text="${notice.creater}"></span>&nbsp;&nbsp;发表于&nbsp;
+			<span class="p2" th:text="${notice.createtime}"></span>&nbsp;&nbsp;
+			<span class="p2" th:text="${notice.countCheck}"></span>人已读&nbsp;&nbsp;
+			
+			</td>
+
+					
+			<td >
+			<a shiro:hasAnyRoles="管理员,超级管理员" class="button border-red"
+				th:href="@{deleteNotice(id=${notice.id})}" onclick="javascript:return del();"><span
+					class="icon-trash-o">删除</span></a><br /><br /><br />
+				
+			<a class="button border-main"
+				th:href="@{checkNotice(id=${notice.id})}" ><span
+					class="icon-check" onclick="javascript:return check();">确认收到</span></a>
+					<br /><br /><br />		
+					</td>
+					
+		</tr>
+	</table>
+	</div></div>
+<script>
+
+function del() {
+	var msg = "确认删除吗？";
+	if (confirm(msg)==true){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+
+function changeSearch(){
+    $("#listform").submit();
+}
+    
+    
+
+</script>
+</body>
+</html>

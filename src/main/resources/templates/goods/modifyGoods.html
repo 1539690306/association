@@ -1,0 +1,86 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>管理员后台</title>
+<link rel="stylesheet" href="../css/pintuer.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/combo.select.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/pintuer.js"></script>
+<script src="../js/jquery.combo.select.js"></script>
+<script type="text/javascript" src="../ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../ueditor/ueditor.all.min.js"></script>
+
+</head>
+<body>
+	<div class="panel admin-panel">
+		<div class="panel-head" id="add">
+			<strong><span class="icon-pencil-square-o">修改物品</span> </strong>
+		</div>
+		<div class="body-content">
+			<form action="updateGoods" method="post" class="form-x"
+				enctype="multipart/form-data">
+
+
+				<input hidden="true" type="text" name="id" th:value="${goods.id}" />
+
+
+				<div class="form-group">
+					<div class="label">
+						<label>物品名称：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" name="name"
+							th:value="${goods.name}" readonly="readonly"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="label">
+						<label>物品价值：</label>
+					</div>
+					<div class="field">
+						<input type="text" class="input w50" name="price"
+							th:value="${goods.price}" readonly="readonly"/>
+						<div class="tips"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="label">
+						<label>状态：</label>
+					</div>
+					<div class="field">
+
+						<select class="input w50" name="state">
+							<option value="可用" th:selected="${goods.state=='可用'}">可用</option>
+							<option value="已借出" th:selected="${goods.state=='已借出'}">已借出</option>
+							<option value="已损坏" th:selected="${goods.state=='已损坏'}">已损坏</option>
+						</select>
+						<div class="tips"></div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="label">
+						<label>描述：</label>
+					</div>
+					<textarea id="ms" name="ms"
+						style="border: 0; border-radius: 5px; background-color: rgba(241, 241, 241, .98); width: 355px; height: 100px; padding: 10px; resize: none;"
+						th:text="${goods.ms}"></textarea>
+				</div>
+
+				<div class="form-group">
+					<div class="label"></div>
+					<div class="field">
+						<button class="button bg-main icon-check-square-o" type="submit">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

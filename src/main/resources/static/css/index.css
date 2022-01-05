@@ -1,0 +1,104 @@
+.main{
+	margin:0 auto;
+	width:900px;
+}
+.line1{
+	background:#6588A8;
+	width:900px;
+	height:4px;
+	margin-top:-5px;
+}
+.table1{
+	font:14px "微软雅黑";
+	color:#4D4AFB;
+}
+.second{
+	background: #D8E9F7;
+	height:30px;
+	width:900px;
+}
+.table2{
+	width:900px;
+	border-collapse:collapse; 
+}
+.table2 tr{
+	height:70px;
+	border-top:1px solid #DDDDDD;
+}
+.d1{
+	font:bold 16px "微软雅黑";
+}
+.p1 a{
+	color: #0072DE;
+	font:bold 15px "微软雅黑";
+}
+
+.p2{
+	color:#5B595B;
+	font:12px "微软雅黑";
+	margin-top: 0px;
+}
+a{
+	color:#4D62FA;
+	font:13px "微软雅黑";
+	text-decoration: none;
+
+}
+a:hover{
+	text-decoration: underline;
+
+}
+.table2 tr:nth-child(2n){
+	background-color:#FFFFF1;
+	
+}
+
+
+.line2{
+	width:900px;
+	height: 1px;
+	background: #7BA4D0;
+	margin-top:25px;
+}
+.end{
+	margin-top:15px;
+	text-align: center;
+	color:#333333;
+	font:13px "微软雅黑";
+}
+.line3{
+	width:900px;
+	height: 1px;
+	background: #DDDDDD;
+	margin:10px 0px;
+}
+.table3{
+	font:12px "微软雅黑";
+	margin:0px auto;
+}
+.table3 tr{
+	height: 35px;
+}
+.p11{
+	color: #000;
+	font:bold 15px "微软雅黑";
+	margin-bottom: 7px;
+}
+.b1{
+	width: 600px;
+	height:10px;
+	background: #EDEEEF;
+}
+.b11{
+	width:100px;
+	height:8px;
+	background: #FFEC06;
+	border: 1px solid #E8DB32;
+}
+.table4,.table5{
+	font:12px "微软雅黑";
+	margin:0px auto;
+}
+.table4 tr{
+	height: 40px;
+}

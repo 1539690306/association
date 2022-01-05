@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>修改密码页面页面</title>
+<script type="text/javascript" th:src="@{js/jquery-1.4.3.js}"></script>
+
+</head>
+<body>
+	<fieldset>
+		<legend>修改密码页面</legend>
+		<h3 th:text="${msg}" style="color: red"></h3>
+		<form action="updateUserPwd" method="post">
+		旧密码：<input id="pwd" type="password" name="pwd" size="20" /><br /> <br />
+		
+		新密码：<input id="newPwd" type="password" name="newPwd" size="20" /><br /> <br />
+		
+		确认密码：<input id="confirmPwd" type="password" name="confirmPwd" size="20" /><br /> <br />
+		
+		<input type="submit" value="提交" />
+		</form>
+	</fieldset>
+	
+	
+</body>
+</html>

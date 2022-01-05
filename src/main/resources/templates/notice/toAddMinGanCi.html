@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<fieldset style="width: 200px;">
+		<legend>敏感词添加</legend>
+		<form action="addMinGanCi" method="post">
+			<input type="text" name="word" size="20" placeholder="请输入敏感词..."/><br /><br /> 
+			<input type="submit" value="提交" />
+			<h3 th:text="${msg}" style="color: red"></h3>
+		</form>
+	</fieldset>
+</body>
+</html>

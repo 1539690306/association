@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户信息列表展示</title>
+<script type="text/javascript" src="@{js/jquery-1.4.3.js}"></script>
+<link rel="stylesheet" href="../css/pintuer.css">
+<link rel="stylesheet" href="../css/admin.css">
+<script src="../js/jquery-1.4.3.js"></script>
+
+</head>
+<body>
+
+        <div class="padding border-bottom">
+            <ul class="search" style="padding-left: 10px;">
+               
+                <li>
+                    <a shiro:hasAnyRole="管理员,超级管理员" class="button border-main" th:href="@{/deptUserExcel(deptname=${dept.deptname})}">导出数据</a>
+                </li>
+                
+            </ul>
+        </div>
+
+    
+	<table class="table table-hover text-center">
+		<tr>
+			<td>ID</td>
+			<td>用户名</td>
+			<td>性别</td>
+			<td>部门</td>
+			<td>职位</td>
+			<td>联系电话</td>
+			<td>邮箱</td>
+			<td>专业</td>
+			
+			<td colspan="2"><div shiro:hasAnyRoles="管理员,超级管理员">操作</div></td>
+		
+		</tr>
+		<tr th:each="user:${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.sex}"></td>
+			<td th:text="${user.dept}"></td>
+			<td th:text="${user.roles}"></td>
+			<td th:text="${user.phone}"></td>
+			<td th:text="${user.email}"></td>
+			<td th:text="${user.major}"></td>
+
+			<td><div class="button-group" shiro:hasAnyRoles="管理员,超级管理员">
+			<a class="button border-main " th:href="@{resetUserPwd(id=${user.id})}" onclick="javascript:return resetPwd();">
+			<span class="icon-refresh">重置密码</span> </a>
+
+			<a class="button border-main" th:href="@{modifyUser(id=${user.id})}"><span
+						class="icon-edit">修改</span></a>
+			<a class="button border-red"
+				th:href="@{deleteUser(id=${user.id})}" onclick="javascript:return del();"><span class="icon-trash-o">删除</span></a>
+				
+			
+				</div>
+				</td>
+
+		</tr>
+		
+		
+	</table>
+<script>
+function del() {
+	var msg = "确认删除吗？";
+	if (confirm(msg)==true){
+	return true;
+	}else{
+	return false;
+	}
+	}
+function resetPwd() {
+	var msg = "确认重置该用户密码吗？";
+	if (confirm(msg)==true){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+function changeSearch(){
+    $("#listform").submit();
+}
+</script>
+</body>
+</html>

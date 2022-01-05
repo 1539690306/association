@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户信息修改页面</title>
+<script type="text/javascript" th:src="@{js/jquery-1.4.3.js}"></script>
+
+</head>
+<body>
+	<fieldset>
+		<legend>用户信息修改页面</legend>
+		<form action="updateDept" method="post">
+			<input id="id" type="text" name="id" hidden="true" size="20"
+				th:value="${dept.id}" /> 部门名：<input
+				id="deptname" type="text" name="deptname" size="20" th:value="${dept.deptname}" /><br />
+			<br />  
+			部门简介：
+					<textarea  name="introduce"
+						style="border: 0; border-radius: 5px; background-color: rgba(241, 241, 241, .98); width: 355px; height: 100px; padding: 10px; resize: none;"
+						placeholder="请输入" th:text="${dept.introduce}"></textarea>
+			<input type="submit" value="提交" />
+			<h3 th:text="${msg}" style="color: red"></h3><br/>
+		</form>
+	</fieldset>
+</body>
+</html>

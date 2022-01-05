@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>用户信息修改页面</title>
+<script type="text/javascript" th:src="@{js/jquery-1.4.3.js}"></script>
+
+</head>
+<body>
+	<fieldset>
+		<legend>用户信息修改页面</legend>
+		<form action="updateUser" method="post">
+			<input id="id" type="text" name="id" hidden="true" size="20"
+				th:value="${user.id}" /> 部门：<input id="dept" type="text"
+				name="dept" size="20" th:value="${user.dept}" /><br /> <br />姓名：<input
+				id="name" type="text" name="name" size="20" th:value="${user.name}" /><br />
+			<br /> 性别： <select id="sex" name="sex">
+				<option value="男" th:selected="${user.sex=='男'}">男</option>
+				<option value="女" th:selected="${user.sex=='女'}">女</option>
+			</select> 
+			
+			<br /> <br /> 电话： <input id="phone" type="text" name="phone"
+				size="20" th:value="${user.phone}" /><br /> <br /> 邮箱： <input
+				id="email" type="email" name="email" size="20"
+				th:value="${user.email}" /><br /> <br /> 专业： <input id="major"
+				type="text" name="major" size="20" th:value="${user.major}" /><br />
+			<br /> 
+			
+			职位： <select id="roles" name="roles">
+				<option shiro:hasAnyRoles="超级管理员" value="管理员" th:selected="${user.roles=='管理员'}">管理员</option>
+
+				<option value="普通用户" th:selected="${user.roles=='普通用户'}">普通用户</option>
+			</select>
+		
+				<br /> <br /> 
+			<input type="submit" value="提交" />
+			<h3 th:text="${msg}" style="color: red"></h3><br/>
+		</form>
+	</fieldset>
+</body>
+</html>
